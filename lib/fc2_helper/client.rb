@@ -10,7 +10,7 @@ module Fc2Helper
     end
 
     def get_adult_ranking_weekly
-      @crawler.parsed_movie_data(parsed_movie_data)
+      @crawler.get_adult_ranking_weekly
     end
     def get_adult_ranking_monthly
       @crawler.get_adult_ranking_monthly
