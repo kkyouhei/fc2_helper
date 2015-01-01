@@ -3,24 +3,25 @@
 module Fc2Helper
   class Movies
     attr_reader :index
-    @crawler
+    attr_reader :movie_list
 
-    after_initialize do
-      @movies = {}
+    def initialize
+      @movie_list = Array.new
       @index = 0
     end
 
     def append_movie(movie)
-      @movies << movie
+      @movie_list.push(movie)
     end
 
     def next?
-      @movie.length > @index
+      @movie_list.length > @index
     end
 
     def next
+      return nil unless next?
       @index += 1
-      @movies[@index]
+      @movie_list[@index]
     end
 
   end
