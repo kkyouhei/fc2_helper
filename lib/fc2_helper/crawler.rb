@@ -76,7 +76,7 @@ module Fc2Helper
 
     def parsed_movie_data(html)
       movies = Movies.new
-      html.xpath('//div[@id="main"]').each do |post|
+      html.xpath('//div[@id="video_list_1column"]').each do |post|
         begin
           post.search('div[@class="video_thumb_small clsThumbToAlbum"]').each do |div|
             movie = Movie.new
