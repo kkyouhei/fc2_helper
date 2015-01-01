@@ -80,9 +80,13 @@ module Fc2Helper
         begin
           post.search('div[@class="video_thumb_small clsThumbToAlbum"]').each do |div|
             movie = Movie.new
+            # movie upid
             movie.upid = div.attribute("upid").value
+            # movie title
             movie.title = div.children.attribute('title').value
-
+            # movie thumnail url
+            movie.thumnail_url = div.children.children.attribute('src').value
+            # movie time
             time = div.attribute('data-duration').to_s.split(":")
             seconds = time[1].to_i + time[0].to_i * 60
             movie.seconds = seconds

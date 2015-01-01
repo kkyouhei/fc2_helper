@@ -2,7 +2,7 @@
 
 module Fc2Helper
   class Movie
-    attr_accessor :title, :upid, :seconds, :external_link_tag
+    attr_accessor :title, :upid, :seconds,:thumnail_url, :external_link_tag
     SRC = 'http://static.fc2.com/video/js/outerplayer.min.js'
     TK = 'TVRJM056WTNOamc9'
     SJ = '45000'
