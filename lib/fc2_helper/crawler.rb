@@ -59,16 +59,16 @@ module Fc2Helper
       parsed_movie_data(movie_data)
     end
     def get_adult_search(keyword, index=1)
-      @crawler_url = sprintf(Env::FC2_ADULT_SEARCH, keyword)
       @page_index = index
-      movie_data = get_html(sprintf(Env::FC2_ADULT_SEARCH, keyword, index))
+      @crawler_url = "#{Env::FC2_ADULT_SEARCH}keyword=\"#{keyword}\""
+      movie_data = get_html(sprintf(@crawler_url, index))
       parsed_movie_data(movie_data)
     end
 
   private
     def get_html(url)
       begin
-        return Nokogiri.HTML(open(url).read)
+        return Nokogiri.HTML(open(URI.escape(url)).read)
       rescue Exception => e
         raise e
       end
@@ -83,7 +83,7 @@ module Fc2Helper
             movie.upid = div.attribute("upid").value
             movie.title = div.children.attribute('title').value
 
-            time = div.attribute('data-duration').value.split(":")
+            time = div.attribute('data-duration').to_s.split(":")
             seconds = time[1].to_i + time[0].to_i * 60
             movie.seconds = seconds
 
