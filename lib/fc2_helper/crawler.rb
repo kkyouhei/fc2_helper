@@ -78,15 +78,18 @@ module Fc2Helper
       movies = Movies.new
       html.xpath('//div[@id="video_list_1column"]').each do |post|
         begin
-          post.search('div[@class="video_list_renew_thumb"]').each do |elem|
-            div = elem.search('div[@class="video_thumb_small clsThumbToAlbum"]')
+          post.search('div[@class="video_list_renew clearfix"]').each do |elem|
+            thumb_div = elem.search('div[@class="video_thumb_small clsThumbToAlbum"]')
+
             movie = Movie.new
             # movie upid
-            movie.upid = div.attribute("upid").value
+            movie.upid = thumb_div.attribute("upid").value
             # movie title
-            movie.title = div.children.attribute('title').value
+            movie.title = thumb_div.children.attribute('title').value
+            # movie view limit desc
+            movie.limit_desc = elem.css('li.member_icon').inner_text.to_s
             # movie thumnail url
-            movie.thumnail_url = div.children.children.attribute('src').value
+            movie.thumnail_url = thumb_div.children.children.attribute('src').value
             # movie time
             time = elem.search('span[@class="video_time_renew"]').text.to_s.split(":")
             seconds = time[1].to_i + time[0].to_i * 60
