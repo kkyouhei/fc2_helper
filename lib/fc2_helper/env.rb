@@ -8,4 +8,5 @@ module Env
   FC2_ADULT_POPULAR = "#{FC2_ADULT_URL}recentpopular.php?page=%s"
   FC2_ADULT_NEW = "#{FC2_ADULT_URL}list_scont?page=%s"
   FC2_ADULT_SEARCH = "#{FC2_ADULT_URL}movie_search.php?perpage=50&page=%s&"
+  FC2_ADULT_FREE_SEARCH = "#{FC2_ADULT_URL}all_view_search.php?perpage=50&page=%s&"
 end

@@ -64,6 +64,12 @@ module Fc2Helper
       movie_data = get_html(sprintf(@crawler_url, index))
       parsed_movie_data(movie_data)
     end
+    def get_adult_free_search(keyword, index=1)
+      @page_index = index
+      @crawler_url = "#{Env::FC2_ADULT_FREE_SEARCH}keyword=\"#{keyword}\""
+      movie_data = get_html(sprintf(@crawler_url, index))
+      parsed_movie_data(movie_data)
+    end
 
   private
     def get_html(url)

@@ -27,6 +27,10 @@ module Fc2Helper
     def get_adult_search(keyword)
       @crawler.get_adult_search(keyword)
     end
+    def get_adult_free_search(keyword)
+      @crawler.get_adult_free_search(keyword)
+    end
+
   end
 
 end
